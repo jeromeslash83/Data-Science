@@ -37,3 +37,8 @@ def nucleotide_counter(nucleotide):
 def RNA_transcription(DNA):
     """Transcribes DNA into RNA sequence."""
     return DNA.replace('T', 'U')
+
+def reverse_complementation(DNA):
+    DNA_complements = {'A':'T', 'T':'A', 'C':'G', 'G':'C'}
+    "Returns a reverse complement of a single strand"
+    return ''.join([DNA_complements[nuc] for nuc in DNA])[::-1]
