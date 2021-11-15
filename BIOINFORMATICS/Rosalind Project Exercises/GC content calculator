@@ -1,0 +1,30 @@
+def GC_content(sequence):
+    """Returns the percentage of G's and C's of a certain nucleotide sequence."""
+
+    return ((sequence.count('C') + sequence.count('G'))/ len(sequence)) * 100
+
+
+def read_file(filepath):
+    with open(filepath, 'r') as f:
+        return [lines.strip() for lines in f.readlines()]
+
+FASTAfile = read_file('rosalind_gc.txt')
+
+Dict_fasta = {}
+
+Label_fasta = ''
+
+for line in FASTAfile:
+    if '>' in line:
+        Label_fasta= line
+        Dict_fasta[Label_fasta] = ''
+    else:
+        Dict_fasta[Label_fasta] += line
+
+CG_percent = {}
+
+for label, nucleotide in Dict_fasta.items():
+    CG_percent[label] = GC_content(nucleotide)
+
+for label, GC_count in CG_percent.items():
+    print(f"{label}\n{GC_count}")
