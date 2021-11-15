@@ -1,8 +1,9 @@
+from Genetic_structures import *
+
+
 def sequenceValidate(nuc_seq, nuc_type):
     """Checks if a sequence is a valid nucleotide sequence."""
 
-    DNA = ['A', 'T', 'C', 'G']
-    RNA = ['A', 'U', 'C', 'G']
     if nuc_type == 'DNA':
         the_DNA  = nuc_seq.upper()
         for nuc in the_DNA:
@@ -39,6 +40,5 @@ def RNA_transcription(DNA):
     return DNA.replace('T', 'U')
 
 def reverse_complementation(DNA):
-    DNA_complements = {'A':'T', 'T':'A', 'C':'G', 'G':'C'}
     "Returns a reverse complement of a single strand"
     return ''.join([DNA_complements[nuc] for nuc in DNA])[::-1]
