@@ -28,3 +28,7 @@ for label, nucleotide in Dict_fasta.items():
 
 for label, GC_count in CG_percent.items():
     print(f"{label}\n{GC_count}")
+
+
+print('\nThe sequence with the most GC percent is:\n')
+print(f"{max(CG_percent)[1:]}\n{CG_percent[max(CG_percent)]}")
