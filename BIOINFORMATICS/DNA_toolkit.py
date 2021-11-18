@@ -80,3 +80,20 @@ def translate_nuc(seq, type, initial = 0):
         return aa_seq
                 
 
+def codon_frequency(seq, aa, initial = 0):
+    """Shows codon frequency of a given amino acid in a sequence."""
+    list_of_codons = []
+
+    for n in range(initial, (len(seq) - 2), 3):
+        if RNA_Codons[seq[n:n+3]] == aa:
+            list_of_codons.append(seq[n:n+3])
+    
+    frequency = dict(Counter(list_of_codons))
+    total = sum(frequency.values())
+
+    for codon in frequency:
+        frequency[codon] = round((frequency[codon]/total) * 100, 2)
+
+    return frequency
+
+
