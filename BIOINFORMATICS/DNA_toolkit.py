@@ -34,11 +34,49 @@ def nucleotide_counter(nucleotide):
         return nucleotides
     except:
         raise('Not a valid nucleotide')
+        
 
 def RNA_transcription(DNA):
     """Transcribes DNA into RNA sequence."""
     return DNA.replace('T', 'U')
 
+
 def reverse_complementation(DNA):
     "Returns a reverse complement of a single strand"
     return ''.join([DNA_complements[nuc] for nuc in DNA])[::-1]
+
+
+def GC_content(sequence):
+    """Returns the percentage of G's and C's of a certain nucleotide sequence."""
+
+    return ((sequence.count('C') + sequence.count('G'))/ len(sequence)) * 100
+
+
+
+def GC_content_sub(sequence, k = 1):
+    """Returns the percentage of G's and C's of a certain nucleotide subsection of a nucleotide sequence."""
+
+    subsection = []
+    for n in range(len(sequence) + 1 - k, k):
+        subsequence = sequence[n:(n + k)]
+        subsection.append(GC_content(subsequence))
+    return subsection
+
+
+
+def translate_nuc(seq, type, initial = 0):
+    """Translates an RNA(codons) into amino acid sequence. 
+    Use type (list or string) to return which type do you like your sequence to be."""
+    if type == 'list':
+        return [RNA_Codons[seq[pos:pos+3]] for pos in range(initial, (len(seq) - 2), 3)]
+    else:
+        aa_seq = ''
+        for pos in range(initial, (len(seq) - 2), 3):
+            if RNA_Codons[seq[pos:pos+3]] == '_':
+                aa_seq += '_'
+                break
+            else:
+                aa_seq += (RNA_Codons[seq[pos:pos+3]] + '-')
+        return aa_seq
+                
+
