@@ -32,3 +32,5 @@ for label, GC_count in CG_percent.items():
 
 print('\nThe sequence with the most GC percent is:\n')
 print(f"{max(CG_percent)[1:]}\n{CG_percent[max(CG_percent)]}")
+
+
