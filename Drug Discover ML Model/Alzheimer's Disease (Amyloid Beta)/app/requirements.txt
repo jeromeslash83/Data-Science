@@ -1,0 +1,7 @@
+streamlit~=1.19.0
+pandas~=1.5.3
+base58==2.0.1
+subprocess
+os
+pickle
+Pillow~=9.4.0
